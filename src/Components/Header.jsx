@@ -2,6 +2,7 @@ import { AppBar, Box, Button, Divider, Drawer, IconButton, List, ListItem, ListI
 import { useState } from "react";
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from "react-router";
+import useOnlineOfflineStatus from "../Hooks/useOnlineOfflineStatus";
 
 const Header = () => {
     // Hookes starts
@@ -9,16 +10,13 @@ const Header = () => {
     const [mobileOpen, setMobileOpen] = useState(false);
     // Hooks end
 
-    // Custom hooks
-
-    // Custom hooks ends
-
     // Functions
     const handleDrawerToggle = () => {
         setMobileOpen((prevState) => !prevState);
     };
     // Functions ends
 
+    const status = useOnlineOfflineStatus()
 
     const drawer = (
         <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
@@ -71,6 +69,12 @@ const Header = () => {
                             MUI
                         </Typography>
                         <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+                            <Button sx={{ color: '#fff' }} component={Link} to="/grocery" >
+                                Grocery
+                            </Button>
+                            <Button sx={{ color: '#fff' }} component={Link} to="/" >
+                                {status ? "Online🟢" : "Offline🔴"}
+                            </Button>
                             <Button sx={{ color: '#fff' }} component={Link} to="/" >
                                 Home
                             </Button>

@@ -1,13 +1,16 @@
-import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
-import ErrorPage from "./Components/ErrorPage.jsx"
+import ErrorPage from "./pages/ErrorPage.jsx"
 import { createBrowserRouter, RouterProvider } from 'react-router'
-import About from './Components/About.jsx'
-import Contact from './Components/Contact.jsx'
-import CardsBody from './Components/CardsBody.jsx'
+import Contact from './pages/Contact.jsx'
 import ResturantsMenu from './Components/ResturantsMenu.jsx'
+import About from './pages/About.jsx'
+import CardsBody from './pages/CardsBody.jsx'
+import { lazy, Suspense } from 'react'
+import ResturanctsCardsShimmer from './Components/ResturanctsCardsShimmer.jsx'
+
+const Grocery = lazy(() => import("./pages/Grocery.jsx"))
 
 
 const appRouter = createBrowserRouter([
@@ -27,6 +30,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
+      },
+      {
+        path: "/grocery",
+        element: <Suspense fallback={<ResturanctsCardsShimmer />}> <Grocery /></Suspense>,
       },
       {
         path: "/resturants/:resid",

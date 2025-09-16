@@ -1,7 +1,6 @@
 import { Container, createTheme, CssBaseline, ThemeProvider } from '@mui/material'
 import Header from './Components/Header'
 import { useState } from 'react'
-import CardsBody from './Components/CardsBody';
 import { Outlet } from 'react-router';
 
 function App() {

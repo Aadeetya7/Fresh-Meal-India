@@ -1,10 +1,11 @@
 import styled from '@emotion/styled';
 import { alpha, Box, Button, Grid, InputAdornment, TextField } from '@mui/material'
 import SearchIcon from '@mui/icons-material/Search';
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react'; // dont remove we have made custom hook of it.
 import { RES_API } from "../utils/constants"
-import ResturantCard from './ResturantCard';
-import ResturanctsCardsShimmer from './ResturanctsCardsShimmer';
+import ResturantCard from '../Components/ResturantCard';
+import ResturanctsCardsShimmer from '../Components/ResturanctsCardsShimmer';
+import useResturantList from '../Hooks/useResturantList';
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -20,18 +21,25 @@ const Search = styled('div')(({ theme }) => ({
         width: 'auto',
     },
 }));
+
 const CardsBody = () => {
-    // Styling
-    // Styling ends
+
+    const { resturantsData, filteredDate, setresturantsData, setfilteredDate } = useResturantList()
+    console.log(resturantsData, "new Custom hook");
 
     // Hooks
-    const [resturantsData, setresturantsData] = useState([])
-    const [searchValue, setsearchValue] = useState("")
-    const [filteredDate, setfilteredDate] = useState([])
+    // Dont remove we have made custom hook of it 
+    // const [resturantsData, setresturantsData] = useState([])
+    // const [filteredDate, setfilteredDate] = useState([])
 
-    useEffect(() => {
-        fetchData()
-    }, [])
+    const [searchValue, setsearchValue] = useState("")
+
+    // Dont remove we have made custom hook of it 
+    // useEffect(() => {
+    //     fetchData()
+    // }, [])
+
+
     // Hooks ends
 
     // Functions
@@ -47,20 +55,19 @@ const CardsBody = () => {
             return item.info.avgRating > 4.5
         })
         setresturantsData(filteredData)
-
     }
 
-    const fetchData = async () => {
-        const data = await fetch(RES_API);
-        const json = await data.json();
-        const firstIndex = json?.data?.cards?.findIndex((item) => item?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-        const nextIndex = json?.data?.cards?.findIndex((item, id) => id > firstIndex && item?.card?.card?.gridElements?.infoWithStyle?.restaurants)
-        const getResturants = nextIndex !== -1 ? json?.data?.cards[nextIndex]?.card?.card?.gridElements?.infoWithStyle?.restaurants : null;
-        console.log(getResturants);
-        setresturantsData(getResturants)
-        setfilteredDate(getResturants)
-    }
-
+    // Dont remove we have made custom hook of it 
+    // const fetchData = async () => {
+    //     const data = await fetch(RES_API);
+    //     const json = await data.json();
+    //     const firstIndex = json?.data?.cards?.findIndex((item) => item?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    //     const nextIndex = json?.data?.cards?.findIndex((item, id) => id > firstIndex && item?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+    //     const getResturants = nextIndex !== -1 ? json?.data?.cards[nextIndex]?.card?.card?.gridElements?.infoWithStyle?.restaurants : null;
+    //     console.log(getResturants);
+    //     setresturantsData(getResturants)
+    //     setfilteredDate(getResturants)
+    // }
 
 
     return (
