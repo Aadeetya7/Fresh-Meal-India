@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { alpha, Box, Button, Grid, InputAdornment, TextField } from '@mui/material'
 import SearchIcon from '@mui/icons-material/Search';
-import { useEffect, useState } from 'react'; // dont remove we have made custom hook of it.
+import { useState } from 'react'; // dont remove we have made custom hook of it.
 import { RES_API } from "../utils/constants"
 import ResturantCard from '../Components/ResturantCard';
 import ResturanctsCardsShimmer from '../Components/ResturanctsCardsShimmer';

@@ -8,7 +8,7 @@ const ResturantCard = ({ data }) => {
 
     return (
         <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }} sx={{ p: 1 }}>
-            <Link style={{ display: "block" }} to={"/resturants/" + info.id} >
+            <Link style={{ display: "block", textDecoration: "none" }} to={"/resturants/" + info.id} >
                 <Card
                     sx={{
                         borderRadius: 3,

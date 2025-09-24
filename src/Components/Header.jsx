@@ -69,12 +69,6 @@ const Header = () => {
                             MUI
                         </Typography>
                         <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-                            <Button sx={{ color: '#fff' }} component={Link} to="/grocery" >
-                                Grocery
-                            </Button>
-                            <Button sx={{ color: '#fff' }} component={Link} to="/" >
-                                {status ? "Online🟢" : "Offline🔴"}
-                            </Button>
                             <Button sx={{ color: '#fff' }} component={Link} to="/" >
                                 Home
                             </Button>
@@ -83,6 +77,12 @@ const Header = () => {
                             </Button>
                             <Button sx={{ color: '#fff' }} component={Link} to="/contact">
                                 Contact
+                            </Button>
+                            <Button sx={{ color: '#fff' }} component={Link} to="/grocery" >
+                                Grocery
+                            </Button>
+                            <Button sx={{ color: '#fff' }} component={Link} to="/" >
+                                {status ? "Online🟢" : "Offline🔴"}
                             </Button>
                             {/* <Button onClick={handleClick} sx={{ color: '#fff' }}>
                                 Dark/Light
